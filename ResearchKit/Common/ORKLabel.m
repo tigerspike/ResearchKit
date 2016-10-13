@@ -58,6 +58,7 @@
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
     [self updateAppearance];
+    [self tintColorDidChange];
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
@@ -68,6 +69,12 @@
 - (void)updateAppearance {
     self.font = [[self class] defaultFont];
     [self invalidateIntrinsicContentSize];
+}
+
+- (void)tintColorDidChange {
+    [super tintColorDidChange];
+    
+    [self setTextColor:[self tintColor]];
 }
 
 - (void)dealloc {
